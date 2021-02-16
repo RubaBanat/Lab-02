@@ -1,69 +1,130 @@
 'use-strict';
 
-let gallery = [];
-let keyWord =[];
 
-function itemList() {
-  var unique = [];
-  $.each(keyWord, function (i, el) {
-      if ($.inArray(el, unique) === -1) unique.push(el);
+let keyWord = [];
+let cards = [];
+
+  $.ajax('./data/page-1.json')
+  .then((data) => {
+    data.forEach(item => {
+      let imgs = new Img(item);
+  
+      imgs.toHtml();
+    });
+    rendKeyWrd();
   });
 
-  for (let index = 0; index < unique.length; index++) {
-    $('#select').append(`<option value="${unique[index]}">${unique[index]}</option>`)
-    
+let page1 = $(`<button> page 1 </button>`)
+$('#pages').append(page1)
+
+$(page1).click(function (){
+$('section').empty();
+cards = [];
+keyWord = [];
+$('#select').children().not(':first-child').remove();
+
+
+  $.ajax('./data/page-1.json')
+  .then((data) => {
+    data.forEach(item => {
+      let imgs = new Img(item);
+  
+      imgs.toHtml();
+    });
+    rendKeyWrd();
+  });
+})
+
+let page2 = $(`<button> page 2 </button>`)
+$('#pages').append(page2)
+$(page2).click(function (){
+  $('section').empty();
+  cards = [];
+  keyWord = [];
+  $('#select').children().not(':first-child').remove();
+
+  $.ajax('./data/page-2.json')
+  .then((data) => {
+    data.forEach(item => {
+      let imgs = new Img(item);
+  
+      imgs.toHtml();
+    });
+    rendKeyWrd();
+  });
+})
+
+function Img (value) {
+  this.image_url = value.image_url;
+  this.title = value.title;
+  this.description = value.description;
+  this.keyword = value.keyword;
+  this.horns = value.horns;
+  
+  cards.push(this);
+}
+
+Img.prototype.toHtml = function () {
+  let template = $('#container').html();
+  let newObj = Mustache.render(template, this);
+  // console.log(this);
+  $('#photo-container').append(newObj);
+
+  if (!(keyWord.includes(this.keyword))){
+    keyWord.push(this.keyword);
+    // console.log(keyWord);
   }
 }
 
-function filter() {
-  $('#select').on('change', function(){
-    $('#container').children().not(':first-child').remove();
+function rendKeyWrd () {
+  keyWord.forEach(element => {
+    $('#select').append(`<option value ="${element}">${element}</option>`)
+  });
+}
 
-    for (let index = 0; index < gallery.length; index++) {
-      
-      if (this.value == gallery[index].keyword) {
-        gallery[index].render();
-        
-      }
+$('#select').on('change' , function (){
+  $('div').hide();
+  let selectOption = $(this).val();
+  $(`.${selectOption}`).fadeIn(800);
+  if (this.value == "all" ){
+    for (let index = 0; index < cards.length; index++) {
+       cards[index].toHtml();
       
     }
-  })
-}
+  }
+})
 
-function Img (image_url, title, description, keyword, horns) {
-  this.image_url = image_url;
-  this.title = title;
-  this.description = description;
-  this.keyword = keyword;
-  this.horns = horns;
+$('#select2').append(`<option value ="number">by number of horns</option>`)
+$('#select2').append(`<option value ="title"> A-Z </option>`)
 
-  gallery.push(this);
-  keyWord.push(this.keyword);
-}
-
-Img.prototype.render = function(){
-  let template = $('#photo-template').clone();
-
-//  console.log(template);
-
-  template.html(`<h2>${this.title}</h2>
-      <img src="${this.image_url}" alt="${this.keyword}">
-      <p>${this.description}</p>`);
-      template.removeAttr('id');
-      $('section').append(template);
-}
-
-$.ajax('./data/page-1.json').then((data) => {
-  console.log(data);
-  data.forEach(element => {
-    let imgs = new Img(element.image_url, element.title, element.description, element.keyword, element.horns);
-
-    imgs.render();
+function sortTitle(){
+  cards.sort((a,b) => {
+    if(a.title < b.title){
+      return -1;
+    }
+    if(a.title > b.title){
+      return 1;
+    }
+    return 0;
   });
-  filter();
-  itemList();
+}
+
+
+function sortHorns(){
+  cards.sort((a,b) => {
+    if (a.horns < b.horns){
+  
+      return -1;
+    }
+     else if (a.horns > b.horns) return 1;
+  });
+}
+$('#select2').on('change', function (){
+  if(this.value == 'title'){
+    sortTitle();
+
+  }else if(this.value == 'number'){
+    sortHorns();
+  }
 });
-
-
-
 
