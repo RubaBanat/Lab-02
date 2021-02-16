@@ -109,22 +109,31 @@ function sortTitle(){
   });
 }
 
-
 function sortHorns(){
   cards.sort((a,b) => {
     if (a.horns < b.horns){
   
-      return -1;
+      return 1;
     }
-     else if (a.horns > b.horns) return 1;
+     else if (a.horns > b.horns) return -1;
   });
 }
 $('#select2').on('change', function (){
+  $('#photo-container').children().remove();
   if(this.value == 'title'){
     sortTitle();
+    for (let index = 0; index < cards.length; index++) {
+      cards[index].toHtml();
+     
+   }
+    
 
   }else if(this.value == 'number'){
     sortHorns();
+    for (let index = 0; index < cards.length; index++) {
+      cards[index].toHtml();
+     
+   }
   }
 });
 
