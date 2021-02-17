@@ -1,12 +1,12 @@
 /*Mobile view*/
-@media (max-width: 480px){
+@media (max-width: 400px){
 *{
     margin: 0;
     padding: 0;
 }
 body {
     width: 100%;
-    background-color:rgb(243, 239, 239);
+    background-color:rgba(80, 35, 35, 0.898);
 }
 header{
     display: grid;
@@ -20,12 +20,12 @@ h1 {
     margin-top: 50px;
     font-family: Lobster;
     font-weight: bolder;
-    text-shadow: 3px 3px rgb(62, 98, 102);
+    text-shadow: 3px 3px rgba(62, 98, 102, 0.707);
 }
 div{
     box-sizing: border-box;
     border: gray 1px solid;
-    width: 290px;
+    width: 260px;
     background-color: rgba(106, 108, 111, 0.412);
     margin-top: 90px;
     padding: 20px;
@@ -36,8 +36,8 @@ div{
     
 }
 img {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 20px;
     
 }
@@ -90,8 +90,8 @@ option{
 
 }
 #photo-container{
-    display: grid;
-   grid-template-columns: auto auto;
+   display: grid;
+   grid-template-columns: auto;
    padding: 10px;
    grid-row-gap: 10px;
     
@@ -108,13 +108,13 @@ p{
 }
 
 button{
-background-color: #2e4a4d;
+background-color: #2e4a4dab;
 border-radius: 5px;
 color: white;
 padding: 10px 25px;
 text-align: center;
 font-size: 13px;   
-margin-left: 30%;
+margin-left: 16%;
 margin-top: 20px;
 width: 100px;
 height: 40px;
@@ -122,6 +122,8 @@ height: 40px;
 
 
 footer {
+    display: grid;
+    grid-template-columns:auto;
     margin-top: 10%;
     height: 60px;
     background-color: black;
@@ -129,10 +131,11 @@ footer {
     text-align: center;
     padding-top: 30px;
     font-size: 20px;
+    width: 100%;
   }
 }
 /* forTablet */
-@media (min-width: 480px) and (max-width: 959px) {
+@media (min-width: 400px) and (max-width: 959px) {
     *{
         margin: 0;
         padding: 0;
@@ -249,6 +252,8 @@ footer {
     
     
     footer {
+        display: grid;
+        grid-template-columns:auto;
         margin-top: 10%;
         height: 60px;
         background-color: black;
@@ -256,6 +261,7 @@ footer {
         text-align: center;
         padding-top: 30px;
         font-size: 20px;
+        width: 100%;
       }
     }
 
@@ -375,8 +381,9 @@ footer {
         height: 40px;
         }
         
-        
         footer {
+            display: grid;
+            grid-template-columns:auto;
             margin-top: 10%;
             height: 60px;
             background-color: black;
@@ -384,5 +391,7 @@ footer {
             text-align: center;
             padding-top: 30px;
             font-size: 20px;
+            width: 100%;
+
           }
         }
