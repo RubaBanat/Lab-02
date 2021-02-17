@@ -6,7 +6,7 @@
 }
 body {
     width: 100%;
-    background-color:rgb(151, 76, 76);
+    background-color:rgba(80, 35, 35, 0.898);
 }
 header{
     display: grid;
@@ -25,7 +25,7 @@ h1 {
 div{
     box-sizing: border-box;
     border: gray 1px solid;
-    width: 290px;
+    width: 260px;
     background-color: rgba(106, 108, 111, 0.412);
     margin-top: 90px;
     padding: 20px;
@@ -36,8 +36,8 @@ div{
     
 }
 img {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 20px;
     
 }
@@ -123,6 +123,7 @@ height: 40px;
 
 footer {
     display: grid;
+    grid-template-columns:auto;
     margin-top: 10%;
     height: 60px;
     background-color: black;
@@ -252,6 +253,7 @@ footer {
     
     footer {
         display: grid;
+        grid-template-columns:auto;
         margin-top: 10%;
         height: 60px;
         background-color: black;
@@ -381,6 +383,7 @@ footer {
         
         footer {
             display: grid;
+            grid-template-columns:auto;
             margin-top: 10%;
             height: 60px;
             background-color: black;
