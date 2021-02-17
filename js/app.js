@@ -35,7 +35,7 @@ $('#select').children().not(':first-child').remove();
   });
 })
 
-let page2 = $(`<button> page 2 </button>`)
+let page2 = $(`<button > page 2 </button>`)
 $('#pages').append(page2)
 $(page2).click(function (){
   $('section').empty();

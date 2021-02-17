@@ -61,6 +61,7 @@ h2{
 #photo-container{
     display: flex;
     flex-wrap: wrap;
+    
 }
 p{
     text-align: center;
