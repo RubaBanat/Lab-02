@@ -1,5 +1,5 @@
 /*Mobile view*/
-@media (max-width: 400px){
+@media (max-width: 480px){
 *{
     margin: 0;
     padding: 0;
@@ -135,7 +135,7 @@ footer {
   }
 }
 /* forTablet */
-@media (min-width: 400px) and (max-width: 959px) {
+@media (min-width: 480px) and (max-width: 959px) {
     *{
         margin: 0;
         padding: 0;
