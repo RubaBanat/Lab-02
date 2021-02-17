@@ -20,7 +20,7 @@ h1 {
     margin-top: 50px;
     font-family: Lobster;
     font-weight: bolder;
-    text-shadow: 3px 3px rgba(62, 98, 102, 0.652);
+    text-shadow: 3px 3px rgba(52, 59, 60, 0.652);
 }
 div{
     box-sizing: border-box;
@@ -108,7 +108,7 @@ p{
 }
 
 button{
-background-color: #2e4a4dab;
+background-color: #2c3a3cab;
 border-radius: 5px;
 color: white;
 padding: 10px 25px;
